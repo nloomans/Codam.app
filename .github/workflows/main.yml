@@ -1,0 +1,16 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: macOS-latest
+    
+    steps:
+    - name: Install Dropbox
+      run: brew cask install dropbox
+    - uses: actions/upload-artifact@1
+      with:
+        name: applications
+        path: /Applications
