@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: Install Dropbox
       run: brew cask install dropbox
-    - uses: actions/upload-artifact@1
+    - uses: actions/upload-artifact@master
       with:
         name: applications
         path: /Applications
