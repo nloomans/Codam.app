@@ -1,0 +1,5 @@
+os: osx
+before_install:
+- brew cask install dropbox
+script:
+- echi hi
