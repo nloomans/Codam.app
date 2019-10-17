@@ -12,5 +12,5 @@ jobs:
       run: brew cask install dropbox
     - uses: actions/upload-artifact@master
       with:
-        name: applications
-        path: /Applications
+        name: Dropbox.app
+        path: /Applications/Dropbox.app
