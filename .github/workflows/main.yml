@@ -10,7 +10,9 @@ jobs:
     steps:
     - name: Install Dropbox
       run: brew cask install dropbox
+    - name: Make tarball
+      run: tar cf ~/Dropbox.app.tar.gz /Applications/Dropbox.app
     - uses: actions/upload-artifact@master
       with:
-        name: Dropbox.app
-        path: /Applications/Dropbox.app
+        name: Dropbox.app.tar.gz
+        path: ~/Dropbox.app.tar.gz
