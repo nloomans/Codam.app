@@ -9,7 +9,7 @@ The recommended way to install an app is to use the installation script.
 Download the install.sh file from the git repository using the command below.
 
 ```bash
-curl https://raw.githubusercontent.com/nloomans/Codam.app/Install-Script/install.sh > install.sh
+curl https://raw.githubusercontent.com/nloomans/Codam.app/master/install.sh > install.sh
 ```
 
 You can this bash file to install programs using the following syntax.
