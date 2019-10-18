@@ -11,7 +11,7 @@ jobs:
     - name: Install Gimp
       run: brew cask install gimp
     - name: Rename .app
-      run: mv /Applications/GIMP-*.app /Applications/GIMP.ap
+      run: mv /Applications/GIMP-*.app /Applications/GIMP.app
     - name: Make tarball
       run: tar -c -v -C /Applications -f GIMP.app.tar.gz GIMP.app
     - uses: actions/upload-artifact@master
