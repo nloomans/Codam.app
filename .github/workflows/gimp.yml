@@ -6,14 +6,15 @@ jobs:
   build:
     runs-on: macOS-latest
     steps:
+    - name: Pull source
+      uses: actions/checkout@v1
     - name: Install Gimp
       run: brew cask install gimp
     - name: Rename .app
       run: mv /Applications/GIMP-*.app /Applications/GIMP.app
     - name: Make tarball
       run: tar -c -v -C /Applications -f GIMP.app.tar.gz GIMP.app
-    - uses: JasonEtco/upload-to-release@v0.1.1
-      with:
-        args: GIMP.app.tar.gz
+    - name: Upload to release
+      run: ./upload.sh GIMP.app.tar.gz
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
