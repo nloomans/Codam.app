@@ -11,7 +11,7 @@ jobs:
     - name: Install Dropbox
       run: brew cask install dropbox
     - name: Make tarball
-      run: tar -c -v -C /Users/nloomans/Applications -f Dropbox.app.tar.gz Dropbox.app
+      run: tar -c -v -C /Applications -f Dropbox.app.tar.gz Dropbox.app
     - uses: actions/upload-artifact@master
       with:
         name: out
