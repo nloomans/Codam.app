@@ -1,12 +1,10 @@
 name: GIMP
 
-on: [push, repository_dispatch]
+on: release
 
 jobs:
   build:
-
     runs-on: macOS-latest
-    
     steps:
     - name: Install Gimp
       run: brew cask install gimp
@@ -14,7 +12,8 @@ jobs:
       run: mv /Applications/GIMP-*.app /Applications/GIMP.app
     - name: Make tarball
       run: tar -c -v -C /Applications -f GIMP.app.tar.gz GIMP.app
-    - uses: actions/upload-artifact@master
+    - uses: JasonEtco/upload-to-release@v0.1.1
       with:
-        name: out
-        path: GIMP.app.tar.gz
+        args: GIMP.app.tar.gz
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
