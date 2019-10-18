@@ -6,12 +6,13 @@ jobs:
   build:
     runs-on: macOS-latest
     steps:
+    - name: Pull source
+      uses: actions/checkout@v1
     - name: Install Dropbox
       run: brew cask install dropbox
     - name: Make tarball
       run: tar -c -v -C /Applications -f Dropbox.app.tar.gz Dropbox.app
-    - uses: JasonEtco/upload-to-release@v0.1.1
-      with:
-        args: Dropbox.app.tar.gz
+    - name: Upload to release
+      run: ./upload.sh Dropbox.app.tar.gz
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
