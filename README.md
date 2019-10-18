@@ -5,8 +5,8 @@ install on a Codam iMac because of the inability to mount `.dmg`s.
 
 ## Downloading
 
-You can find the latest downloads on the
-[Releases](https://github.com/nloomans/Codam.app/releases) page.
+You can find the latest downloads on
+[the releases page.](https://github.com/nloomans/Codam.app/releases/latest/)
 
 ## Requesting an .app
 
