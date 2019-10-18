@@ -1,6 +1,6 @@
 name: CI
 
-on: [push]
+on: [push, repository_dispatch]
 
 jobs:
   build:
@@ -11,8 +11,8 @@ jobs:
     - name: Install Dropbox
       run: brew cask install dropbox
     - name: Make tarball
-      run: tar cf Dropbox.app.tar.gz /Applications/Dropbox.app
+      run: tar -c -v -C /Users/nloomans/Applications -f Dropbox.app.tar.gz Dropbox.app
     - uses: actions/upload-artifact@master
       with:
-        name: Dropbox.app.tar.gz
+        name: out
         path: Dropbox.app.tar.gz
