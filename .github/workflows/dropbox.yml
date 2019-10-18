@@ -1,18 +1,17 @@
 name: Dropbox
 
-on: [push, repository_dispatch]
+on: release
 
 jobs:
   build:
-
     runs-on: macOS-latest
-    
     steps:
     - name: Install Dropbox
       run: brew cask install dropbox
     - name: Make tarball
       run: tar -c -v -C /Applications -f Dropbox.app.tar.gz Dropbox.app
-    - uses: actions/upload-artifact@master
+    - uses: JasonEtco/upload-to-release@v0.1.1
       with:
-        name: out
-        path: Dropbox.app.tar.gz
+        args: Dropbox.app.tar.gz
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
