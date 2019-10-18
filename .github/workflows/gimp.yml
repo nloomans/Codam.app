@@ -1,4 +1,4 @@
-name: CI
+name: GIMP
 
 on: [push, repository_dispatch]
 
