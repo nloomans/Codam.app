@@ -15,6 +15,6 @@ jobs:
     - name: Make tarball
       run: tar -c -v -C /Applications -f GIMP.app.tar.gz GIMP.app
     - name: Upload to release
-      run: ./upload.sh GIMP.app.tar.gz
+      run: ./upload.sh GIMP.app.tar.gz application/gzip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

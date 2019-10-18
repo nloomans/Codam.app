@@ -13,6 +13,6 @@ jobs:
     - name: Make tarball
       run: tar -c -v -C /Applications -f Dropbox.app.tar.gz Dropbox.app
     - name: Upload to release
-      run: ./upload.sh Dropbox.app.tar.gz
+      run: ./upload.sh Dropbox.app.tar.gz application/gzip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
