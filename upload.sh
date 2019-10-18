@@ -3,8 +3,6 @@
 set -e
 set -o pipefail
 
-brew install jq
-
 # Ensure that the GITHUB_TOKEN secret is included
 if [[ -z "$GITHUB_TOKEN" ]]; then
   echo "Set the GITHUB_TOKEN env variable."
@@ -26,7 +24,7 @@ fi
 
 # Prepare the headers
 AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}"
-CONTENT_LENGTH_HEADER="Content-Length: $(stat -c%s "${1}")"
+CONTENT_LENGTH_HEADER="Content-Length: $(stat -f%z "${1}")"
 
 if [[ -z "$2" ]]; then
   CONTENT_TYPE_HEADER="Content-Type: ${2}"
