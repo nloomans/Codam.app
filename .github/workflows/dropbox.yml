@@ -1,6 +1,8 @@
 name: Dropbox
 
-on: release
+on:
+  release:
+    types: [published]
 
 jobs:
   build:
@@ -8,6 +10,9 @@ jobs:
     steps:
     - name: Pull source
       uses: actions/checkout@v1
+    # TODO: Remove when github updates brew
+    - name: Update Homebrew
+      run: brew update
     - name: Install Dropbox
       run: brew cask install dropbox
     - name: Make tarball

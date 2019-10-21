@@ -1,6 +1,8 @@
 name: GIMP
 
-on: release
+on:
+  release:
+    types: [published]
 
 jobs:
   build:

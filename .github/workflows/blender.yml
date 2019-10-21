@@ -1,0 +1,20 @@
+name: Blender
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+    - name: Pull source
+      uses: actions/checkout@v1
+    - name: Install Blender
+      run: brew cask install blender
+    - name: Make tarball
+      run: tar -c -v -C /Applications -f Blender.app.tar.gz Blender.app
+    - name: Upload to release
+      run: ./upload.sh Blender.app.tar.gz application/gzip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
