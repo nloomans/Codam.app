@@ -1,0 +1,20 @@
+name: KeepassXC
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+    - name: Pull source
+      uses: actions/checkout@v1
+    - name: Install KeepassXC
+      run: brew cask install keepassxc
+    - name: Make tarball
+      run: tar -c -v -C /Applications -f KeepassXC.app.tar.gz KeepassXC.app
+    - name: Upload to release
+      run: ./upload.sh KeepassXC.app.tar.gz application/gzip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
