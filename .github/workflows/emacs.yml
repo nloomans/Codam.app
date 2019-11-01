@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: Pull source
       uses: actions/checkout@v1
-    - name: Install Dropbox
+    - name: Install Emacs
       run: brew cask install emacs
     - name: Make tarball
       run: tar -c -v -C /Applications -f Emacs.app.tar.gz Emacs.app
