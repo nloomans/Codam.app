@@ -1,0 +1,18 @@
+name: ObinsKit
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+    - name: Pull source
+      uses: actions/checkout@v1
+    - name: Download ObinsKit 
+      run: wget http://releases.obins.net/occ/darwin/x64/ObinsKit_1.1.1_x64.dmg
+    - name: Mount image
+      run: hdiutil attach ObinsKit_1.1.1_x64.dmg
+    - name: Debug
+      run: find /Volumes
