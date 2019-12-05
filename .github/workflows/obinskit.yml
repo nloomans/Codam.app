@@ -14,5 +14,9 @@ jobs:
       run: wget http://releases.obins.net/occ/darwin/x64/ObinsKit_1.1.1_x64.dmg
     - name: Mount image
       run: hdiutil attach ObinsKit_1.1.1_x64.dmg
-    - name: Debug
-      run: find /Volumes
+    - name: Make tarball
+      run: tar -c -v -C /Volumes/* -f ObinsKit.app.tar.gz ObinsKit.app
+    - name: Upload to release
+      run: ./upload.sh ObinsKit.app.tar.gz application/gzip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
