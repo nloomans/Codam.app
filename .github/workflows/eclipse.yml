@@ -11,7 +11,7 @@ jobs:
     - name: Pull source
       uses: actions/checkout@v1
     - name: Install Eclipse
-      run: brew cask install gimp
+      run: brew cask install eclipse-ide
     - name: Rename .app
       run: mv /Applications/eclipse*.app /Applications/Eclipse.app
     - name: Make tarball
