@@ -4,10 +4,12 @@ from pathlib import Path
 import json
 import sys
 import os
+import tarfile
+import shutil
 
 config_loc = str(Path.home()) + '/Library/Application Support/Codam_app/'
 path = config_loc + 'download.cfg'
-ins_path = config_loc + '/installs.cfg'
+ins_path = config_loc + 'installs.cfg'
 
 def write_json(j_file):
 	with open(path, 'w') as f:
@@ -102,12 +104,22 @@ def add_install_to_config(name, loc):
 	write_installs(j_file)
 
 def install_prog(prog):
-	install_loc = str(Path.home()) + '/Applications'
+	install_loc = str(Path.home()) + '/Applications/'
 	if len(sys.argv) == 4:
 		install_loc = sys.argv[3]
+		if not install_loc.endswith('/'):
+			install_loc += '/'
 	if not check_install(prog):
-		
-		add_install_to_config(prog['name'], install_loc)
+		print("Downloading Program")
+		urllib.request.urlretrieve(prog['download'], str(Path.home()) + '/goinfre/' + prog['name'] + 'tar.gz')
+		print("Program Downloaded")
+		print("Installing Program")
+		tar = tarfile.open(str(Path.home()) + '/goinfre/' + prog['name'] + 'tar.gz', 'r:')
+		tar.extractall(install_loc)
+		tar.close()
+		os.remove(str(Path.home()) + '/goinfre/' + prog['name'] + 'tar.gz')
+		add_install_to_config(prog['name'], install_loc + prog['name'])
+		print("Program Installed")
 
 def install(ins, j_file):
 	found = False
@@ -127,7 +139,23 @@ def print_usage():
 
 def list_installs(j_file):
 	for pro in j_file['installs']:
-		print('Name: ' + pro['name'] + ", Installed: " + pro['installed'])
+		print('Name: ' + pro['name'])
+
+def remove_program(loc):
+	found = False
+	j_file = read_installs()
+	for prog in j_file['installs']:
+		if prog['name'] == loc:
+			found = True
+			shutil.rmtree(prog['loc'] + '.app')
+			for i in range(len(j_file['installs'])):
+				if j_file['installs'][i]['name'] == prog['name']:
+					del j_file['installs'][i]
+					write_installs(j_file)
+					break
+				
+	if not found:
+		print("Program Not Found")
 
 if __name__ == "__main__":
 	if len(sys.argv) != 3 and len(sys.argv) != 2:
@@ -140,4 +168,9 @@ if __name__ == "__main__":
 		print_usage()
 		exit()
 	if sys.argv[1] == 'install':
-		install(sys.arv[2], j_file)
+		install(sys.argv[2], j_file)
+		exit()
+	elif sys.argv[1] == 'remove':
+		remove_program(sys.argv[2])
+		exit()
+
