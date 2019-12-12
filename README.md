@@ -48,3 +48,12 @@ Run the following command to install the latest version of Visual Studio Code:
 ```bash
 brew cask install visual-studio-code --appdir=~/Applications
 ```
+
+## Atom
+
+Atom is not included because it can be installed using homebrew.
+Run the following command to install the latest version of Atom:
+
+```bash
+brew cask install atom --appdir=~/Applications
+```
