@@ -1,0 +1,20 @@
+name: Notion
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+    - name: Pull source
+      uses: actions/checkout@v1
+    - name: Install Notion
+      run: brew cask install notion
+    - name: Make tarball
+      run: tar -c -v -C /Applications -f Notion.app.tar.gz Notion.app
+    - name: Upload to release
+      run: ./upload.sh Notion.app.tar.gz application/gzip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
