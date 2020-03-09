@@ -1,0 +1,23 @@
+name: Brave
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+    - name: Pull source
+      uses: actions/checkout@v1
+    # TODO: Remove when github updates brew
+    - name: Update Homebrew
+      run: brew update
+    - name: Install Brave
+      run: brew cask install brave-browser
+    - name: Make tarball
+      run: tar -c -v -C /Applications -f Brave.app.tar.gz Brave-Browser.app
+    - name: Upload to release
+      run: ./upload.sh Brave.app.tar.gz application/gzip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
