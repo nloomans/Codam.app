@@ -10,11 +10,11 @@ jobs:
     steps:
     - name: Pull source
       uses: actions/checkout@v1
-    - name: Install Discord
+    - name: Install Adobe Acrobat Reader
       run: brew cask install adobe-acrobat-reader
     - name: Make tarball
-      run: tar -c -v -C /Applications -f 'Adobe Acrobat Reader DC.app.tar.gz' 'Adobe Acrobat Reader DC.app'
+      run: tar -c -v -C /Applications -f AdobeAcrobatReaderDC.app.tar.gz 'Adobe Acrobat Reader DC.app'
     - name: Upload to release
-      run: ./upload.sh 'Adobe Acrobat Reader DC.app.tar.gz' application/gzip
+      run: ./upload.sh AdobeAcrobatReaderDC.app.tar.gz application/gzip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
