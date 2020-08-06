@@ -1,0 +1,20 @@
+name: Acrobat
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+    - name: Pull source
+      uses: actions/checkout@v1
+    - name: Install Discord
+      run: brew cask install adobe-acrobat-reader
+    - name: Make tarball
+      run: tar -c -v -C /Applications -f 'Adobe Acrobat Reader DC.app.tar.gz' 'Adobe Acrobat Reader DC.app'
+    - name: Upload to release
+      run: ./upload.sh 'Adobe Acrobat Reader DC.app.tar.gz' application/gzip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
