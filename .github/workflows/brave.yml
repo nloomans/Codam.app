@@ -14,7 +14,7 @@ jobs:
     - name: Update Homebrew
       run: brew update
     - name: Install Brave
-      run: brew cask install brave-browser
+      run: brew install cask brave-browser
     - name: Make tarball
       run: tar -c -v -C /Applications -f Brave.app.tar.gz Brave-Browser.app
     - name: Upload to release

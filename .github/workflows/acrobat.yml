@@ -11,7 +11,7 @@ jobs:
     - name: Pull source
       uses: actions/checkout@v1
     - name: Install Adobe Acrobat Reader
-      run: brew cask install adobe-acrobat-reader
+      run: brew install cask adobe-acrobat-reader
     - name: Make tarball
       run: tar -c -v -C /Applications -f AdobeAcrobatReaderDC.app.tar.gz 'Adobe Acrobat Reader DC.app'
     - name: Upload to release

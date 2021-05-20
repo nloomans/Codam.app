@@ -11,7 +11,7 @@ jobs:
     - name: Pull source
       uses: actions/checkout@v1
     - name: Install ExactMouse 
-      run: brew tap homebrew/cask-drivers; brew cask install steelseries-exactmouse-tool
+      run: brew tap homebrew/cask-drivers; brew install cask steelseries-exactmouse-tool
     - name: Make tarball
       run: tar -c -v -C /Applications -f ExactMouse.app.tar.gz 'SteelSeries ExactMouse Tool.app'
     - name: Upload to release

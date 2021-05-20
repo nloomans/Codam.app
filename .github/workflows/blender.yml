@@ -11,7 +11,7 @@ jobs:
     - name: Pull source
       uses: actions/checkout@v1
     - name: Install Blender
-      run: brew cask install blender
+      run: brew install cask blender
     - name: Make tarball
       run: tar -c -v -C /Applications -f Blender.app.tar.gz Blender.app
     - name: Upload to release

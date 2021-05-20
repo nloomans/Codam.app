@@ -11,7 +11,7 @@ jobs:
     - name: Pull source
       uses: actions/checkout@v1
     - name: Install Julia
-      run: brew cask install julia
+      run: brew install cask julia
     - name: Rename .app
       run: mv /Applications/Julia*.app /Applications/Julia.app
     - name: Make tarball

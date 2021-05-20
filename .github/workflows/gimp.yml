@@ -11,7 +11,7 @@ jobs:
     - name: Pull source
       uses: actions/checkout@v1
     - name: Install Gimp
-      run: brew cask install gimp
+      run: brew install cask gimp
     - name: Rename .app
       run: mv /Applications/GIMP-*.app /Applications/GIMP.app
     - name: Make tarball
