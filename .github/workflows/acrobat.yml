@@ -13,7 +13,7 @@ jobs:
     - name: Install Adobe Acrobat Reader
       run: brew install cask adobe-acrobat-reader
     - name: Make tarball
-      run: tar -c -v -C /Applications -f AdobeAcrobatReaderDC.app.tar.gz 'Adobe Acrobat Reader DC.app'
+      run: tar -cz -v -C /Applications -f AdobeAcrobatReaderDC.app.tar.gz 'Adobe Acrobat Reader DC.app'
     - name: Upload to release
       run: ./upload.sh AdobeAcrobatReaderDC.app.tar.gz application/gzip
       env:

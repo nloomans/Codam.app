@@ -13,7 +13,7 @@ jobs:
     - name: Install Discord
       run: brew install cask discord
     - name: Make tarball
-      run: tar -c -v -C /Applications -f Discord.app.tar.gz Discord.app
+      run: tar -cz -v -C /Applications -f Discord.app.tar.gz Discord.app
     - name: Upload to release
       run: ./upload.sh Discord.app.tar.gz application/gzip
       env:

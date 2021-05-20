@@ -13,7 +13,7 @@ jobs:
     - name: Install Notion
       run: brew install cask notion
     - name: Make tarball
-      run: tar -c -v -C /Applications -f Notion.app.tar.gz Notion.app
+      run: tar -cz -v -C /Applications -f Notion.app.tar.gz Notion.app
     - name: Upload to release
       run: ./upload.sh Notion.app.tar.gz application/gzip
       env:

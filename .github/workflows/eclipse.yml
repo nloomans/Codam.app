@@ -13,7 +13,7 @@ jobs:
     - name: Install Eclipse
       run: brew install cask eclipse-ide
     - name: Make tarball
-      run: tar -c -v -C /Applications -f Eclipse.app.tar.gz Eclipse.app
+      run: tar -cz -v -C /Applications -f Eclipse.app.tar.gz Eclipse.app
     - name: Upload to release
       run: ./upload.sh Eclipse.app.tar.gz application/gzip
       env:

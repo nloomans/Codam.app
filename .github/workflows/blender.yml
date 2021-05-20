@@ -13,7 +13,7 @@ jobs:
     - name: Install Blender
       run: brew install cask blender
     - name: Make tarball
-      run: tar -c -v -C /Applications -f Blender.app.tar.gz Blender.app
+      run: tar -cz -v -C /Applications -f Blender.app.tar.gz Blender.app
     - name: Upload to release
       run: ./upload.sh Blender.app.tar.gz application/gzip
       env:

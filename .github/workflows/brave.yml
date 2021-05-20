@@ -16,7 +16,7 @@ jobs:
     - name: Install Brave
       run: brew install cask brave-browser
     - name: Make tarball
-      run: tar -c -v -C /Applications -f Brave.app.tar.gz Brave-Browser.app
+      run: tar -cz -v -C /Applications -f Brave.app.tar.gz Brave-Browser.app
     - name: Upload to release
       run: ./upload.sh Brave.app.tar.gz application/gzip
       env:

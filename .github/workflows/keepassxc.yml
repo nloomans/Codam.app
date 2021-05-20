@@ -13,7 +13,7 @@ jobs:
     - name: Install KeepassXC
       run: brew install cask keepassxc
     - name: Make tarball
-      run: tar -c -v -C /Applications -f KeepassXC.app.tar.gz KeepassXC.app
+      run: tar -cz -v -C /Applications -f KeepassXC.app.tar.gz KeepassXC.app
     - name: Upload to release
       run: ./upload.sh KeepassXC.app.tar.gz application/gzip
       env:

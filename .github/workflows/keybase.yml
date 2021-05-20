@@ -13,7 +13,7 @@ jobs:
     - name: Install Keybase
       run: brew install cask keybase
     - name: Make tarball
-      run: tar -c -v -C /Applications -f Keybase.app.tar.gz Keybase.app
+      run: tar -cz -v -C /Applications -f Keybase.app.tar.gz Keybase.app
     - name: Upload to release
       run: ./upload.sh Keybase.app.tar.gz application/gzip
       env:

@@ -15,7 +15,7 @@ jobs:
     - name: Rename .app
       run: mv /Applications/GIMP-*.app /Applications/GIMP.app
     - name: Make tarball
-      run: tar -c -v -C /Applications -f GIMP.app.tar.gz GIMP.app
+      run: tar -cz -v -C /Applications -f GIMP.app.tar.gz GIMP.app
     - name: Upload to release
       run: ./upload.sh GIMP.app.tar.gz application/gzip
       env:

@@ -16,7 +16,7 @@ jobs:
     - name: Install Dropbox
       run: brew install cask dropbox
     - name: Make tarball
-      run: tar -c -v -C /Applications -f Dropbox.app.tar.gz Dropbox.app
+      run: tar -cz -v -C /Applications -f Dropbox.app.tar.gz Dropbox.app
     - name: Upload to release
       run: ./upload.sh Dropbox.app.tar.gz application/gzip
       env:

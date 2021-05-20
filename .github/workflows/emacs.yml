@@ -13,7 +13,7 @@ jobs:
     - name: Install Emacs
       run: brew install cask emacs
     - name: Make tarball
-      run: tar -c -v -C /Applications -f Emacs.app.tar.gz Emacs.app
+      run: tar -cz -v -C /Applications -f Emacs.app.tar.gz Emacs.app
     - name: Upload to release
       run: ./upload.sh Emacs.app.tar.gz application/gzip
       env:

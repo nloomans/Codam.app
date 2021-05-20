@@ -15,7 +15,7 @@ jobs:
     - name: Mount image
       run: hdiutil attach ObinsKit_1.1.1_x64.dmg
     - name: Make tarball
-      run: tar -c -v -C '/Volumes/ObinsKit 1.1.1' -f ObinsKit.app.tar.gz ObinsKit.app
+      run: tar -cz -v -C '/Volumes/ObinsKit 1.1.1' -f ObinsKit.app.tar.gz ObinsKit.app
     - name: Upload to release
       run: ./upload.sh ObinsKit.app.tar.gz application/gzip
       env:

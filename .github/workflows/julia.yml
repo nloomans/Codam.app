@@ -15,7 +15,7 @@ jobs:
     - name: Rename .app
       run: mv /Applications/Julia*.app /Applications/Julia.app
     - name: Make tarball
-      run: tar -c -v -C /Applications -f Julia.app.tar.gz Julia.app
+      run: tar -cz -v -C /Applications -f Julia.app.tar.gz Julia.app
     - name: Upload to release
       run: ./upload.sh Julia.app.tar.gz application/gzip
       env:
