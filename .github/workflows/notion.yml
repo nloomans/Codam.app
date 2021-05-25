@@ -11,7 +11,7 @@ jobs:
     - name: Pull source
       uses: actions/checkout@v1
     - name: Install Notion
-      run: brew install cask notion
+      run: brew install notion
     - name: Make tarball
       run: tar -cz -v -C /Applications -f Notion.app.tar.gz Notion.app
     - name: Upload to release

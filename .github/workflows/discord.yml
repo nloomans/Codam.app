@@ -11,7 +11,7 @@ jobs:
     - name: Pull source
       uses: actions/checkout@v1
     - name: Install Discord
-      run: brew install cask discord
+      run: brew install discord
     - name: Make tarball
       run: tar -cz -v -C /Applications -f Discord.app.tar.gz Discord.app
     - name: Upload to release

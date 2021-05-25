@@ -11,7 +11,7 @@ jobs:
     - name: Pull source
       uses: actions/checkout@v1
     - name: Install KeepassXC
-      run: brew install cask keepassxc
+      run: brew install keepassxc
     - name: Make tarball
       run: tar -cz -v -C /Applications -f KeepassXC.app.tar.gz KeepassXC.app
     - name: Upload to release

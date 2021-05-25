@@ -14,7 +14,7 @@ jobs:
     - name: Update Homebrew
       run: brew update
     - name: Install Dropbox
-      run: brew install cask dropbox
+      run: brew install dropbox
     - name: Make tarball
       run: tar -cz -v -C /Applications -f Dropbox.app.tar.gz Dropbox.app
     - name: Upload to release

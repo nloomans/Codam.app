@@ -11,7 +11,7 @@ jobs:
     - name: Pull source
       uses: actions/checkout@v1
     - name: Install Keybase
-      run: brew install cask keybase
+      run: brew install keybase
     - name: Make tarball
       run: tar -cz -v -C /Applications -f Keybase.app.tar.gz Keybase.app
     - name: Upload to release
