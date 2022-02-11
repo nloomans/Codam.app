@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: Pull source
       uses: actions/checkout@v1
-    - name: Install Discord
+    - name: Install Anki
       run: brew install anki
     - name: Make tarball
       run: tar -cz -v -C /Applications -f Anki.app.tar.gz Anki.app
