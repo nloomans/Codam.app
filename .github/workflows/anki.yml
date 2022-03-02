@@ -1,0 +1,20 @@
+name: Anki
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+    - name: Pull source
+      uses: actions/checkout@v1
+    - name: Install Anki
+      run: brew install anki
+    - name: Make tarball
+      run: tar -cz -v -C /Applications -f Anki.app.tar.gz Anki.app
+    - name: Upload to release
+      run: ./upload.sh Anki.app.tar.gz application/gzip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
